@@ -20,3 +20,4 @@
 - 2026-07-17: Prepared version 0.2.3 for community review. Unified manifests, removed the prohibited word from the description, added English documentation, generated release notes, and added GitHub artifact attestations.
 - 2026-07-17: Prepared version 0.2.4. Replaced direct HTML heading elements in the settings tab with the official `Setting.setHeading()` API.
 - 2026-07-17: Prepared version 0.2.5. Removed optional artifact attestations after the community verifier rejected GitHub-valid signatures, and changed release asset digests to avoid stale attestation lookup.
+- 2026-07-17: Rewrote the Chinese setup documentation as a zero-experience walkthrough, including exact desktop, Cloudflare, iPhone Shortcuts, Android HTTP Shortcuts, first-run verification, and troubleshooting steps. This is documentation-only and does not change the plugin version.
