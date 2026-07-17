@@ -5,7 +5,7 @@
 - `plugin/`: Obsidian desktop plugin source and release manifest.
 - `worker/`: Cloudflare Worker and D1 encrypted queue.
 - `scripts/`: deployment and release helpers.
-- `.github/workflows/`: CI and signed release automation.
+- `.github/workflows/`: CI and release automation.
 
 ## Constraints
 
@@ -19,3 +19,4 @@
 
 - 2026-07-17: Prepared version 0.2.3 for community review. Unified manifests, removed the prohibited word from the description, added English documentation, generated release notes, and added GitHub artifact attestations.
 - 2026-07-17: Prepared version 0.2.4. Replaced direct HTML heading elements in the settings tab with the official `Setting.setHeading()` API.
+- 2026-07-17: Prepared version 0.2.5. Removed optional artifact attestations after the community verifier rejected GitHub-valid signatures, and changed release asset digests to avoid stale attestation lookup.

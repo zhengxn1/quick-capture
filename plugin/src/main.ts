@@ -46,7 +46,7 @@ export default class QuickCapturePlugin extends Plugin {
     });
     this.addCommand({
       id: "sync-now",
-      name: "立即同步手机收集内容",
+      name: "立即同步收集内容",
       callback: () => {
         void this.syncNow(true);
       },
