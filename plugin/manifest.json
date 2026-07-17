@@ -1,10 +1,10 @@
 {
   "id": "quick-capture",
   "name": "Quick Capture",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "minAppVersion": "1.5.0",
   "description": "将手机内容快速、安全地自动同步到 Obsidian。",
-  "author": "zhengxn1",
+  "author": "zhengxx",
   "authorUrl": "https://github.com/zhengxn1",
   "isDesktopOnly": true
 }
