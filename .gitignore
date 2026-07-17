@@ -1,0 +1,11 @@
+node_modules/
+plugin/dist/
+release/
+worker/.wrangler/
+worker/.dev.vars*
+.env*
+secrets.json
+quick-capture-config.json
+.private/
+*.log
+.DS_Store

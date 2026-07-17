@@ -1,0 +1,26 @@
+{
+  "name": "quick-capture",
+  "version": "0.2.0",
+  "private": true,
+  "repository": "https://github.com/zhengxn1/quick-capture",
+  "workspaces": [
+    "plugin",
+    "worker"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace plugin && npm run check --workspace plugin && npm run check --workspace worker",
+    "test": "npm run test --workspace worker",
+    "verify": "npm run build && npm run test",
+    "deploy": "node scripts/deploy.mjs",
+    "release": "node scripts/release.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260716.1",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.0",
+    "obsidian": "^1.13.1",
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.111.0"
+  }
+}

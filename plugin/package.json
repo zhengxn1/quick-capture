@@ -1,0 +1,12 @@
+{
+  "name": "@quick-capture/plugin",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.mjs production",
+    "dev": "node esbuild.mjs",
+    "check": "tsc --noEmit",
+    "install-local": "node install-local.mjs"
+  }
+}

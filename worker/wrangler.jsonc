@@ -1,0 +1,25 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "quick-capture-relay",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "CAPTURE_DB",
+      "database_name": "quick-capture",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "QUEUE_TTL_SECONDS": "604800"
+  },
+  "secrets": {
+    "required": [
+      "CLIENT_TOKEN",
+      "MOBILE_CAPTURE_TOKEN",
+      "SYNC_ENCRYPTION_KEY"
+    ]
+  }
+}
