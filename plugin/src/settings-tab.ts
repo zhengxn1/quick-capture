@@ -12,12 +12,11 @@ export class PrivateSyncSettingTab extends PluginSettingTab {
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "Quick Capture" });
     containerEl.createEl("p", {
       text: "把 iPhone 或 Android 分享的文字和链接安全地收集到当前知识库。电脑离线时内容会暂存在你自己的 Cloudflare 队列中。",
     });
 
-    containerEl.createEl("h3", { text: "1. 连接服务" });
+    new Setting(containerEl).setName("1. 连接服务").setHeading();
     new Setting(containerEl)
       .setName("部署个人接收服务")
       .setDesc("首次使用请部署到自己的 Cloudflare 账号。Cloudflare 会提供免费地址，不需要域名。")
@@ -91,7 +90,7 @@ export class PrivateSyncSettingTab extends PluginSettingTab {
         }),
       );
 
-    containerEl.createEl("h3", { text: "2. 保存与同步" });
+    new Setting(containerEl).setName("2. 保存与同步").setHeading();
     new Setting(containerEl)
       .setName("收集目录")
       .setDesc("每天的内容会追加到该目录下的 YYYY-MM-DD.md 表格。")
@@ -140,7 +139,7 @@ export class PrivateSyncSettingTab extends PluginSettingTab {
         }),
       );
 
-    containerEl.createEl("h3", { text: "3. 配置手机" });
+    new Setting(containerEl).setName("3. 配置手机").setHeading();
     containerEl.createEl("p", {
       text: "完成连接测试后，按照项目教程安装 iPhone 快捷指令或 Android 分享配置。手机只需要服务地址和 MOBILE_CAPTURE_TOKEN。",
     });

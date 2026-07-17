@@ -1,7 +1,7 @@
 {
   "id": "quick-capture",
   "name": "Quick Capture",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "minAppVersion": "1.5.0",
   "description": "Capture text and links from iPhone or Android into your vault through a private Cloudflare relay.",
   "author": "zhengxx",

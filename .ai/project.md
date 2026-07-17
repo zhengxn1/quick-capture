@@ -18,3 +18,4 @@
 ## Change log
 
 - 2026-07-17: Prepared version 0.2.3 for community review. Unified manifests, removed the prohibited word from the description, added English documentation, generated release notes, and added GitHub artifact attestations.
+- 2026-07-17: Prepared version 0.2.4. Replaced direct HTML heading elements in the settings tab with the official `Setting.setHeading()` API.

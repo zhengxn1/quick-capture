@@ -17,6 +17,14 @@ interface MessageResponse {
   messages: QueueEnvelope[];
 }
 
+function responseError(value: unknown): string | undefined {
+  if (typeof value !== "object" || value === null || !("error" in value)) {
+    return undefined;
+  }
+  const error = value.error;
+  return typeof error === "string" ? error : undefined;
+}
+
 export class SyncService {
   private syncing = false;
 
@@ -111,10 +119,7 @@ export class SyncService {
       throw: false,
     });
     if (response.status < 200 || response.status >= 300) {
-      const error =
-        typeof response.json?.error === "string"
-          ? response.json.error
-          : `HTTP ${response.status}`;
+      const error = responseError(response.json as unknown) ?? `HTTP ${response.status}`;
       throw new Error(`中转服务请求失败：${error}`);
     }
     return response.json as T;
