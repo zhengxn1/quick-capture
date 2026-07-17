@@ -1,9 +1,9 @@
 {
   "id": "quick-capture",
   "name": "Quick Capture",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "minAppVersion": "1.5.0",
-  "description": "将手机内容快速、安全地自动同步到 Obsidian。",
+  "description": "Capture text and links from iPhone or Android into your vault through a private Cloudflare relay.",
   "author": "zhengxx",
   "authorUrl": "https://github.com/zhengxn1",
   "isDesktopOnly": true

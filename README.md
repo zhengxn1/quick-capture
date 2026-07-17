@@ -1,5 +1,115 @@
 # Quick Capture
 
+Quick Capture sends text, links, and short notes from an iPhone or Android device to the Obsidian desktop app on macOS or Windows. Messages are stored temporarily in a private Cloudflare Worker and D1 database owned by the user, then written into a daily Markdown table when the desktop app is available.
+
+## Features
+
+- Capture text and links from the iOS Shortcuts share sheet.
+- Accept shared text and URLs from Android automation tools.
+- Automatically sync when the desktop app starts and while it remains open.
+- Keep messages queued while the computer is offline.
+- Append every capture to one Markdown table per day.
+- Encrypt queued content with AES-256-GCM.
+- Delete messages after the desktop plugin confirms successful storage.
+- Deploy the relay to the user's own Cloudflare account.
+- No custom domain, server, public relay, or WeChat account is required.
+
+## How it works
+
+```text
+iPhone or Android
+        | HTTPS
+        v
+Your Cloudflare Worker and D1 database
+        | encrypted queue
+        v
+Quick Capture desktop plugin
+        |
+        v
+00_INPUT/内容收集箱/YYYY-MM-DD.md
+```
+
+The desktop plugin is required on macOS or Windows. The phone acts only as a sender and does not need the mobile Obsidian app.
+
+## Installation
+
+After Quick Capture is accepted into the community directory, install it from:
+
+```text
+Settings -> Community plugins -> Browse -> Quick Capture -> Install -> Enable
+```
+
+For testing, download `main.js`, `manifest.json`, and `styles.css` from the latest GitHub release and place them in:
+
+```text
+<vault>/.obsidian/plugins/quick-capture/
+```
+
+Reload Obsidian and enable Quick Capture under Community plugins.
+
+## Deploy the private relay
+
+A free Cloudflare account is required. A custom domain is optional because Cloudflare supplies a `workers.dev` HTTPS address.
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zhengxn1/quick-capture)
+
+Command-line deployment is also supported on Windows, macOS, and Linux:
+
+```bash
+git clone https://github.com/zhengxn1/quick-capture.git
+cd quick-capture
+npm install
+npm run deploy
+```
+
+Save the four values printed by the deployment process:
+
+- `relayUrl`
+- `CLIENT_TOKEN`
+- `MOBILE_CAPTURE_TOKEN`
+- `SYNC_ENCRYPTION_KEY`
+
+Open `Settings -> Community plugins -> Quick Capture`, enter the relay URL, client token, and encryption key, then select **Test connection**.
+
+## Phone request format
+
+Both iOS and Android send the same JSON request:
+
+```http
+POST https://your-worker.workers.dev/api/mobile-capture
+Content-Type: application/json
+
+{
+  "token": "MOBILE_CAPTURE_TOKEN",
+  "content": "Text or URL to capture"
+}
+```
+
+On iPhone, create a Shortcut that accepts shared text and URLs, sends the JSON request, and appears in the share sheet. On Android, use an automation tool that can receive shared text and perform an HTTP POST request.
+
+## Privacy and security
+
+- Captures pass only through infrastructure deployed in the user's Cloudflare account.
+- Queue content is encrypted with AES-256-GCM.
+- The author does not operate a shared relay and cannot access user captures.
+- Tokens and encryption keys must never be committed to Git.
+- Plugin credentials are stored locally in `.obsidian/plugins/quick-capture/data.json`.
+- Queued messages are deleted after successful synchronization and expire automatically after the configured retention period.
+
+## Development
+
+```bash
+npm install
+npm run verify
+npm run release
+```
+
+Release assets are generated in `release/`. The project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 中文说明
+
 把 iPhone 或 Android 上看到的文字、链接和随手记录，安全地发送到 Mac 或 Windows 上的 Obsidian。手机不需要安装 Obsidian，电脑离线时内容会暂存在用户自己的 Cloudflare 加密队列中。
 
 ## 特点
